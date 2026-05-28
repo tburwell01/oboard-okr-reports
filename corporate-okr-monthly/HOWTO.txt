@@ -1,0 +1,38 @@
+Corporate OKR Monthly Report (Oboard)
+======================================
+
+What it does
+------------
+Pulls Corporate FY27 OKRs from Oboard for fiscal year Apr 1, 2026 – Mar 31, 2027
+(interval names FY27, FY27Q1 … FY27Q4 in Oboard) and builds an HTML slide deck you
+can open in a browser or print / Save as PDF.
+
+Auth
+----
+Either set user environment variable OBOARD_API_TOKEN (recommended), or create a
+one-line file next to the scripts named:
+
+  oboard-api-token.txt
+
+(Create the token in Oboard: Settings → Integrations → API Tokens.)
+
+Run once
+--------
+  cd "%USERPROFILE%\Downloads\corporate-okr-monthly"
+  powershell -ExecutionPolicy Bypass -File .\Invoke-CorporateOKRMonthly.ps1
+
+Outputs (under .\output\)
+-------------------------
+  Corporate-OKRs-FY27-monthly-YYYY-MM-DD.html   ← open this
+  corporate-fy27-latest.json                     ← raw payload for audits
+
+Schedule monthly (Task Scheduler)
+---------------------------------
+Action: Start a program
+Program: powershell.exe
+Arguments: -ExecutionPolicy Bypass -WindowStyle Hidden -File "FULL_PATH\Invoke-CorporateOKRMonthly.ps1"
+
+Config
+------
+Edit config.json to change workspace ID if Corporate moves to another Oboard
+workspace (default 15855 = Sophos / Corporate in existing Sophos reports).
