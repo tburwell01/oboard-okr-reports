@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Objectives and Key Results - FY27</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #0d1b2a; }
+  body { font-family: 'Inter', 'Aptos', 'Calibri', system-ui, sans-serif; }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #0d1b2a 0%, #132238 40%, #0f1f33 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 30px 40px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    padding: 0 28px;
+    margin-top: 10px;
+    height: 610px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .col-header {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    padding: 4px 0;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .obj-box {
+    border: 2px solid;
+    border-radius: 6px;
+    padding: 14px 18px 14px 150px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .obj-box.people { border-color: #4ecdc4; }
+  .obj-box.process { border-color: #b529f7; }
+  .obj-box.technology { border-color: #4ecdc4; }
+
+  .progress-ring {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 130px;
+    height: 130px;
+    text-align: center;
+  }
+
+  .progress-ring svg {
+    width: 130px;
+    height: 130px;
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring .bg { stroke: #1e3a5f; fill: none; stroke-width: 6; }
+  .progress-ring .fg { fill: none; stroke-width: 6; stroke-linecap: round; }
+  .progress-ring .fg.people { stroke: #4ecdc4; }
+  .progress-ring .fg.process { stroke: #b529f7; }
+  .progress-ring .fg.technology { stroke: #4ecdc4; }
+
+  .pct-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .delta-label {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+
+  .obj-content { line-height: 1.4; }
+  .obj-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .obj-desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .empty-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  @media print {
+    html, body { background: #0d1b2a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .slide { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="slide" id="slide"></div>
+
+<script id="raw-data" type="application/json">{"meta":{"periodEnd":"2027-03-31","periodLabel":"2026-04-01 to 2027-03-31","fiscalYearLabel":"FY27","reportTitle":"Corporate OKRs","apiBaseUrl":"https://backend.okr-api.com","generatedAt":"2026-05-28T17:42:34.7113756Z","periodStart":"2026-04-01","generatedLocal":"2026-05-28 13:42","subtitle":"Monthly update · Office of the CEO / Corporate priorities"},"workspace":{"id":15855,"name":"Sophos"},"intervals":{"FY27Q3":{"objectives":0,"avgGradeAchievedPct":null,"objectiveRows":[],"keyResults":0},"FY27Q2":{"objectives":0,"avgGradeAchievedPct":null,"objectiveRows":[],"keyResults":0},"FY27":{"objectives":5,"avgGradeAchievedPct":6.1,"objectiveRows":[{"displayId":"SOP-506","name":"Deliver strong, profitable growth in FY27 â expanding ARR, protecting margin, and strengthening our position in key markets","grade":8,"childCount":8,"owner":"Torjus Gylstorff","groupName":"Sophos","statusLabel":"Level "},{"displayId":"SOP-513","name":"Complete Full Secureworks Integration \u0026 Convergence","grade":20.8,"childCount":4,"owner":"Tony Young","groupName":"Sophos","statusLabel":"Level "},{"displayId":"SOP-523","name":"Transform Sophos via AI","grade":1.7,"childCount":6,"owner":"Tony Young","groupName":"Sophos","statusLabel":"Level "},{"displayId":"SOP-528","name":"Streamline the GTM Operating System to Enable Revenue Growth","grade":0,"childCount":4,"owner":"Tony Young","groupName":"Sophos","statusLabel":"Not started"},{"displayId":"SOP-614","name":"Cybersecurity Vendor of Choice for the Channel","grade":0,"childCount":3,"owner":"Thomas.Driggers","groupName":"Sophos","statusLabel":"Not started"}],"keyResults":22},"FY27Q4":{"objectives":0,"avgGradeAchievedPct":null,"objectiveRows":[],"keyResults":0},"FY27Q1":{"objectives":0,"avgGradeAchievedPct":null,"objectiveRows":[],"keyResults":0}},"intervalOrder":["FY27","FY27Q1","FY27Q2","FY27Q3","FY27Q4"],"previousGrades":[{"value":[{"displayId":"SOP-503","grade":0},{"displayId":"SOP-504","grade":0},{"displayId":"SOP-505","grade":0},{"displayId":"SOP-506","grade":0},{"displayId":"SOP-513","grade":8.3},{"displayId":"SOP-523","grade":0},{"displayId":"SOP-528","grade":0},{"displayId":"SOP-535","grade":12},{"displayId":"SOP-536","grade":40.6},{"displayId":"SOP-562","grade":100},{"displayId":"SOP-592","grade":0},{"displayId":"SOP-593","grade":14.3},{"displayId":"SOP-594","grade":0},{"displayId":"SOP-595","grade":66.7},{"displayId":"SOP-614","grade":0},{"displayId":"SOP-618","grade":5.4},{"displayId":"SOP-619","grade":0},{"displayId":"SOP-620","grade":0},{"displayId":"SOP-621","grade":0},{"displayId":"SOP-622","grade":0},{"displayId":"SOP-623","grade":0}],"Count":21}]}</script>
+<script>
+(function () {
+  var DATA = JSON.parse(document.getElementById('raw-data').textContent);
+  var ann = (DATA.intervals && DATA.intervals.FY27) || { objectives: 0, keyResults: 0, objectiveRows: [] };
+  var allRows = ann.objectiveRows || [];
+
+  // Filter: Corporate component = group "Sophos", top-level only (has children)
+  var rows = allRows.filter(function (o) {
+    return (o.groupName || '').toLowerCase() === 'sophos' && o.childCount > 0;
+  });
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
+
+  // Assign columns based on objective content (matching FY26 slide pillars)
+  function categorize(o) {
+    var n = (o.name || '').toLowerCase();
+    if (n.indexOf('ai') >= 0 || n.indexOf('transform') >= 0) return 'people';
+    if (n.indexOf('channel') >= 0 || n.indexOf('vendor') >= 0) return 'people';
+    if (n.indexOf('secureworks') >= 0 || n.indexOf('integrat') >= 0) return 'technology';
+    if (n.indexOf('growth') >= 0 || n.indexOf('financial') >= 0 || n.indexOf('profitable') >= 0) return 'process';
+    if (n.indexOf('gtm') >= 0 || n.indexOf('operating') >= 0 || n.indexOf('revenue') >= 0) return 'process';
+    return 'process';
+  }
+
+  var people = [], process = [], technology = [];
+  rows.forEach(function (o) {
+    var cat = categorize(o);
+    if (cat === 'people') people.push(o);
+    else if (cat === 'technology') technology.push(o);
+    else process.push(o);
+  });
+
+  function ringHtml(pct, delta, cls) {
+    var r = 52, circ = 2 * Math.PI * r;
+    var offset = circ - (Math.min(pct, 100) / 100) * circ;
+    var deltaStr = (delta >= 0 ? '+' : '') + Math.round(delta);
+    return '<div class="progress-ring">' +
+      '<svg viewBox="0 0 130 130"><circle class="bg" cx="65" cy="65" r="' + r + '"/>' +
+      '<circle class="fg ' + cls + '" cx="65" cy="65" r="' + r + '" stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + offset.toFixed(1) + '"/></svg>' +
+      '<span class="pct-label">' + Math.round(pct) + '%</span>' +
+      '<span class="delta-label">' + deltaStr + '</span></div>';
+  }
+
+  // Build lookup of previous month grades by displayId (baseline = 0 for first run)
+  var prevGrades = {};
+  if (DATA.previousGrades) {
+    DATA.previousGrades.forEach(function (p) { prevGrades[p.displayId] = Number(p.grade) || 0; });
+  }
+
+  function renderBox(o, cls) {
+    var g = (o.grade != null) ? Number(o.grade) : 0;
+    var prev = (prevGrades[o.displayId] != null) ? prevGrades[o.displayId] : 0;
+    var delta = Math.round(g) - Math.round(prev);
+    var raw = o.name || '';
+    // Clean encoding artifacts
+    raw = raw.replace(/\u00e2\u0080\u0093/g, '\u2013').replace(/[^\x20-\x7E\u2013\u2014\u2018\u2019\u201C\u201D]/g, ' ').replace(/\s+/g, ' ').trim();
+    var name = esc(raw);
+    // Split at colon or dash for title:desc
+    var splitIdx = raw.indexOf(':');
+    if (splitIdx < 0 || splitIdx > 50) splitIdx = raw.indexOf(' \u2013 ');
+    var title, desc;
+    if (splitIdx > 0 && splitIdx < raw.length - 2) {
+      title = esc(raw.substring(0, splitIdx).trim());
+      desc = esc(raw.substring(splitIdx + 1).replace(/^\s*/, ''));
+    } else {
+      title = name;
+      desc = '';
+    }
+    return '<div class="obj-box ' + cls + '">' +
+      ringHtml(g, delta, cls) +
+      '<div class="obj-content"><div class="obj-title">' + title + '</div>' +
+      (desc ? '<div class="obj-desc">' + desc + '</div>' : '') +
+      '</div></div>';
+  }
+
+  function renderCol(items, cls) {
+    if (!items.length) return '<div class="empty-note">No objectives in this pillar</div>';
+    return items.map(function (o) { return renderBox(o, cls); }).join('');
+  }
+
+  var html = '<div class="title">Corporate Objectives and Key Results</div>';
+  html += '<div class="columns">';
+
+  html += '<div class="col"><div class="col-header">People</div>' + renderCol(people, 'people') + '</div>';
+  html += '<div class="col"><div class="col-header">Process</div>' + renderCol(process, 'process') + '</div>';
+  html += '<div class="col"><div class="col-header">Technology</div>' + renderCol(technology, 'technology') + '</div>';
+
+  html += '</div>';
+  html += '<div class="footer"><span>Sophos Confidential</span><span>' + esc(DATA.meta && DATA.meta.generatedLocal || '') + ' | FY27 (Apr 2026 - Mar 2027) | Source: Oboard</span></div>';
+
+  document.getElementById('slide').innerHTML = html;
+})();
+</script>
+</body>
+</html>
