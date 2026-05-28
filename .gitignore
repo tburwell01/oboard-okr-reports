@@ -1,0 +1,8 @@
+# Secrets
+oboard-api-token.txt
+*.token
+.env
+
+# OS
+Thumbs.db
+.DS_Store
