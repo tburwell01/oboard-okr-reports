@@ -1,0 +1,13 @@
+{
+  "apiBaseUrl": "https://backend.okr-api.com",
+  "corporateWorkspaceId": 15855,
+  "corporateWorkspaceNameHint": "Sophos",
+  "fiscalYearLabel": "FY27",
+  "periodStart": "2026-04-01",
+  "periodEnd": "2027-03-31",
+  "intervalNamesAnnual": "FY27",
+  "intervalNamesQuarters": ["FY27Q1", "FY27Q2", "FY27Q3", "FY27Q4"],
+  "excludeWorkspaceIds": [19388],
+  "reportTitle": "Corporate OKRs",
+  "subtitle": "Monthly update · Office of the CEO / Corporate priorities"
+}
