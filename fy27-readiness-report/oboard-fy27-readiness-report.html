@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophos OKR Readiness Report — FY27</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --sophos-navy: #1A2B42;
+    --sophos-blue: #2563EB;
+    --sophos-blue-light: #3B82F6;
+    --sophos-dark: #0F172A;
+    --sophos-green: #10B981;
+    --sophos-green-bg: #ECFDF5;
+    --sophos-red: #EF4444;
+    --sophos-red-bg: #FEF2F2;
+    --sophos-amber: #F59E0B;
+    --sophos-amber-bg: #FFFBEB;
+    --sophos-gray-50: #F8FAFC;
+    --sophos-gray-100: #F1F5F9;
+    --sophos-gray-200: #E2E8F0;
+    --sophos-gray-300: #CBD5E1;
+    --sophos-gray-400: #94A3B8;
+    --sophos-gray-500: #64748B;
+    --sophos-gray-600: #475569;
+    --sophos-gray-700: #334155;
+    --sophos-gray-800: #1E293B;
+    --sophos-white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--sophos-gray-50);
+    color: var(--sophos-gray-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .report-header {
+    background: linear-gradient(135deg, var(--sophos-navy) 0%, var(--sophos-dark) 100%);
+    padding: 48px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .report-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .header-brand svg {
+    height: 32px;
+    width: auto;
+  }
+
+  .header-brand-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .report-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--sophos-white);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .report-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .meta-item span {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .summary-section {
+    margin-top: -32px;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 40px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .summary-card {
+    background: var(--sophos-white);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid var(--sophos-gray-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sophos-gray-500);
+    margin-bottom: 8px;
+  }
+
+  .card-value {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .card-detail {
+    font-size: 13px;
+    color: var(--sophos-gray-500);
+  }
+
+  .card-value.blue { color: var(--sophos-blue); }
+  .card-value.green { color: var(--sophos-green); }
+  .card-value.red { color: var(--sophos-red); }
+  .card-value.amber { color: var(--sophos-amber); }
+
+  .readiness-bar-container {
+    background: var(--sophos-white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid var(--sophos-gray-200);
+  }
+
+  .readiness-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .readiness-bar-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--sophos-gray-800);
+  }
+
+  .readiness-bar-pct {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--sophos-green);
+  }
+
+  .readiness-bar {
+    height: 12px;
+    background: var(--sophos-gray-100);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .readiness-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--sophos-green) 0%, var(--sophos-blue-light) 100%);
+    transition: width 1s ease;
+  }
+
+  .readiness-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--sophos-gray-400);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .section-icon.green { background: var(--sophos-green-bg); }
+  .section-icon.red { background: var(--sophos-red-bg); }
+  .section-icon.blue { background: #EFF6FF; }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--sophos-gray-800);
+  }
+
+  .section-count {
+    font-size: 14px;
+    color: var(--sophos-gray-500);
+    font-weight: 400;
+  }
+
+  .workspace-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .workspace-card {
+    background: var(--sophos-white);
+    border-radius: 12px;
+    border: 1px solid var(--sophos-gray-200);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .workspace-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .workspace-card-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .workspace-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--sophos-gray-800);
+  }
+
+  .workspace-key {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .workspace-key.has-obj {
+    background: var(--sophos-green-bg);
+    color: var(--sophos-green);
+  }
+
+  .workspace-key.no-obj {
+    background: var(--sophos-red-bg);
+    color: var(--sophos-red);
+  }
+
+  .workspace-meta {
+    padding: 0 24px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .workspace-meta-item {
+    font-size: 12px;
+    color: var(--sophos-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .workspace-meta-item strong {
+    color: var(--sophos-gray-700);
+    font-weight: 600;
+  }
+
+  .objectives-list {
+    padding: 0 24px 20px;
+  }
+
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid var(--sophos-gray-100);
+  }
+
+  .objective-item:first-child {
+    border-top: none;
+  }
+
+  .obj-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sophos-blue);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .obj-name {
+    font-size: 14px;
+    color: var(--sophos-gray-700);
+    line-height: 1.5;
+  }
+
+  .obj-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .obj-label.draft {
+    background: var(--sophos-amber-bg);
+    color: var(--sophos-amber);
+  }
+
+  .obj-label.group-tag {
+    background: var(--sophos-gray-100);
+    color: var(--sophos-gray-600);
+  }
+
+  .missing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .missing-card {
+    background: var(--sophos-white);
+    border-radius: 12px;
+    border: 1px solid var(--sophos-gray-200);
+    border-left: 4px solid var(--sophos-red);
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+
+  .missing-card:hover {
+    transform: translateY(-1px);
+  }
+
+  .missing-card-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--sophos-gray-800);
+    margin-bottom: 4px;
+  }
+
+  .missing-card-key {
+    font-size: 12px;
+    color: var(--sophos-gray-400);
+    font-weight: 500;
+  }
+
+  .missing-card-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--sophos-red);
+    font-weight: 500;
+  }
+
+  /* Quarterly breakdown table */
+  .quarter-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--sophos-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--sophos-gray-200);
+  }
+
+  .quarter-table th {
+    background: var(--sophos-navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .quarter-table th:first-child {
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .quarter-table td {
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid var(--sophos-gray-100);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .quarter-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--sophos-gray-800);
+    padding-left: 20px;
+  }
+
+  .quarter-table tr:last-child td { border-bottom: none; }
+  .quarter-table tr:hover td { background: var(--sophos-gray-50); }
+
+  .quarter-table .zero { color: var(--sophos-gray-300); }
+  .quarter-table .active { color: var(--sophos-blue); font-weight: 700; }
+  .quarter-table .na { color: var(--sophos-gray-300); font-style: italic; }
+  .quarter-table .totals td { font-weight: 700; background: var(--sophos-gray-50); border-top: 2px solid var(--sophos-gray-200); }
+
+  .report-footer {
+    background: var(--sophos-gray-100);
+    border-top: 1px solid var(--sophos-gray-200);
+    padding: 32px 0;
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 13px;
+    color: var(--sophos-gray-500);
+  }
+
+  .footer-right {
+    font-size: 12px;
+    color: var(--sophos-gray-400);
+  }
+
+  @media (max-width: 768px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .workspace-grid { grid-template-columns: 1fr; }
+    .missing-grid { grid-template-columns: 1fr; }
+    .report-title { font-size: 28px; }
+    .header-meta { flex-direction: column; gap: 8px; }
+    .quarter-table { font-size: 12px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .report-header { padding: 32px 0; }
+    .summary-card, .workspace-card, .missing-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="report-container">
+    <div class="header-content">
+      <div class="header-brand">
+        <svg viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="24" font-family="Inter, sans-serif" font-size="24" font-weight="800" fill="white">Sophos</text>
+        </svg>
+        <span class="header-brand-text">OKR Readiness</span>
+      </div>
+      <h1 class="report-title">FY27 Objectives Readiness Report</h1>
+      <p class="report-subtitle">OBoard workspace coverage analysis &mdash; FY27 annual + quarterly intervals</p>
+      <div class="header-meta">
+        <div class="meta-item">Interval: <span>April 1, 2026 &mdash; March 31, 2027</span></div>
+        <div class="meta-item">Generated: <span>May 28, 2026</span></div>
+        <div class="meta-item">Source: <span>OBoard API (live data)</span></div>
+        <div class="meta-item">Scope: <span>Excludes Sophos Oboard Tech Team</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Summary Cards -->
+<section class="summary-section">
+  <div class="report-container">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="card-label">Total Workspaces</div>
+        <div class="card-value blue">10</div>
+        <div class="card-detail">Across all Sophos business units</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">With FY27 Objectives</div>
+        <div class="card-value green">9</div>
+        <div class="card-detail">Workspaces with at least 1 FY27 OKR</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">Missing Objectives</div>
+        <div class="card-value red">1</div>
+        <div class="card-detail">Workspaces with no FY27 OKRs</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">Total Objectives (FY27)</div>
+        <div class="card-value amber">231</div>
+        <div class="card-detail">488 key results across all workspaces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Readiness Bar -->
+<div class="report-container">
+  <div class="readiness-bar-container">
+    <div class="readiness-bar-header">
+      <div class="readiness-bar-title">FY27 OKR Readiness &mdash; Workspace Coverage</div>
+      <div class="readiness-bar-pct">90%</div>
+    </div>
+    <div class="readiness-bar">
+      <div class="readiness-bar-fill" style="width: 90%"></div>
+    </div>
+    <div class="readiness-bar-labels">
+      <span>0% &mdash; No coverage</span>
+      <span>9 of 10 workspaces have objectives</span>
+      <span>100% &mdash; Full coverage</span>
+    </div>
+  </div>
+
+  <!-- Quarterly Breakdown Table -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon blue">&#x1F4CA;</div>
+      <div>
+        <h2 class="section-title">FY27 + Quarterly Breakdown</h2>
+        <div class="section-count">Objectives / Key Results per workspace per interval</div>
+      </div>
+    </div>
+
+    <table class="quarter-table">
+      <thead>
+        <tr>
+          <th>Workspace</th>
+          <th colspan="2">FY27 (Annual)</th>
+          <th colspan="2">FY27 Q1</th>
+          <th colspan="2">FY27 Q2</th>
+          <th colspan="2">FY27 Q3</th>
+          <th colspan="2">FY27 Q4</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>Obj</th><th>KR</th>
+          <th>Obj</th><th>KR</th>
+          <th>Obj</th><th>KR</th>
+          <th>Obj</th><th>KR</th>
+          <th>Obj</th><th>KR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OSP</td>
+          <td class="active">4</td><td class="active">15</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos</td>
+          <td class="active">5</td><td class="active">22</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos Finance</td>
+          <td class="active">138</td><td class="active">207</td>
+          <td class="active">9</td><td class="zero">0</td>
+          <td class="active">13</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="active">4</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos HR</td>
+          <td class="active">3</td><td class="active">15</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos IT</td>
+          <td class="active">16</td><td class="active">32</td>
+          <td class="active">28</td><td class="active">28</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos Legal</td>
+          <td class="active">3</td><td class="active">15</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos Marketing</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>Sophos MDR Services</td>
+          <td class="active">6</td><td class="active">11</td>
+          <td class="na">&mdash;</td><td class="na">&mdash;</td>
+          <td class="na">&mdash;</td><td class="na">&mdash;</td>
+          <td class="na">&mdash;</td><td class="na">&mdash;</td>
+          <td class="na">&mdash;</td><td class="na">&mdash;</td>
+        </tr>
+        <tr>
+          <td>Sophos Sales</td>
+          <td class="active">3</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>STG</td>
+          <td class="active">53</td><td class="active">151</td>
+          <td class="active">2</td><td class="active">7</td>
+          <td class="active">6</td><td class="active">3</td>
+          <td class="zero">0</td><td class="zero">0</td>
+          <td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr class="totals">
+          <td>TOTAL</td>
+          <td>231</td><td>468</td>
+          <td>39</td><td>35</td>
+          <td>19</td><td>3</td>
+          <td>0</td><td>0</td>
+          <td>4</td><td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Workspaces WITH Objectives -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon green">&#x2705;</div>
+      <div>
+        <h2 class="section-title">Workspaces with FY27 Objectives</h2>
+        <div class="section-count">9 workspaces &middot; 231 objectives total</div>
+      </div>
+    </div>
+
+    <div class="workspace-grid">
+
+      <!-- Sophos Finance -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos Finance</div>
+          <span class="workspace-key has-obj">FIN &middot; 138 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>207 Key Results</strong></div>
+          <div class="workspace-meta-item">Q1: 9 obj &middot; Q2: 13 obj &middot; Q4: 4 obj</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Complete the integration of Secureworks to migrate and consolidate on Sophos platforms</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Support transaction readiness &mdash; financial records, documentation, and reconciliations ready for third party review</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Implement AI-driven automation tools across the CFO Org to reduce manual processing time</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Enable disciplined, data-driven decisions that drive company growth and profitability</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Optimize tax savings <span class="obj-label group-tag">Tax</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Business partnering <span class="obj-label group-tag">Tax</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STG -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">STG</div>
+          <span class="workspace-key has-obj">STG &middot; 53 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>151 Key Results</strong></div>
+          <div class="workspace-meta-item">Q1: 2 obj, 7 KR &middot; Q2: 6 obj, 3 KR</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">MDR Convergence <span class="obj-label group-tag">X-Ops</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Industry Recognition <span class="obj-label group-tag">X-Ops</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">X-Ops Threat Intelligence exposed/leveraged across the business</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Accelerate delivery velocity without compromising quality <span class="obj-label group-tag">Platform</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Improve service reliability and operational excellence <span class="obj-label group-tag">Platform</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Democratize cybersecurity via Intelix threat intelligence <span class="obj-label group-tag">Platform</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos IT -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos IT</div>
+          <span class="workspace-key has-obj">IT &middot; 16 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>32 Key Results</strong></div>
+          <div class="workspace-meta-item">Q1: 28 obj, 28 KR</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">AWS: Establish a Modern, Secure, and Automated AWS Environment <span class="obj-label draft">DRAFT</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">AWS: Enable Efficient and Cloud-Native Operations <span class="obj-label draft">DRAFT</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">AWS: Automate Management, Monitoring, and Compliance <span class="obj-label draft">DRAFT</span></div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Power Platform Scale &amp; Maturity Initiative 2026</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Enhance digital experience to enable measurable revenue growth</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Embed responsible, secure AI capabilities across enterprise workflows</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Deliver efficiencies from Sophos&ndash;Secureworks integration</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos MDR Services -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos MDR Services</div>
+          <span class="workspace-key has-obj">MDR &middot; 6 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>11 Key Results</strong></div>
+          <div class="workspace-meta-item">Quarterly intervals not yet created</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Deliver the converged MDR service across all customer cohorts</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Accelerate AI adoption from pilot to production across the analyst workflow</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Build the workforce and operating model for an AI-augmented service</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Establish operational analytics as a core decision-making capability</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Raise service quality and deepen customer impact</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Improve perception of Sophos MDR as a destination SOC</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos (Corporate) -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos (Corporate)</div>
+          <span class="workspace-key has-obj">SOP &middot; 5 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>22 Key Results</strong></div>
+          <div class="workspace-meta-item">Annual only &mdash; no quarterly entries yet</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Deliver strong, profitable growth in FY27 &mdash; expanding ARR, protecting margin, and strengthening position in key markets</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Complete Full Secureworks Integration &amp; Convergence</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Transform Sophos via AI</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Streamline the GTM Operating System to Enable Revenue Growth</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Cybersecurity Vendor of Choice for the Channel</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OSP -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">OSP</div>
+          <span class="workspace-key has-obj">OSP &middot; 4 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>15 Key Results</strong></div>
+          <div class="workspace-meta-item">Annual only &mdash; no quarterly entries yet</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Measure and Improve the Predictability and Confidence in Strategic Delivery of OSP led projects</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Ensure Strategic OSP led Initiatives Deliver Measurable Business Outcomes</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Enable Faster, Better Executive Decisions and Prioritization of Strategic initiatives through OSP governance</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Achieve 60% installation of OSP AI Ideas</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos HR -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos HR</div>
+          <span class="workspace-key has-obj">HR &middot; 3 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>15 Key Results</strong></div>
+          <div class="workspace-meta-item">Annual only &mdash; no quarterly entries yet</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Enhance HR Operations through standardization, centralization and AI optimization</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Update talent/performance management tools to upgrade talent and maximize employee contributions</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Drive transformational Change Management &mdash; re-orgs, M&amp;A, and potential sale readiness</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos Legal -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos Legal</div>
+          <span class="workspace-key has-obj">LEG &middot; 3 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>15 Key Results</strong></div>
+          <div class="workspace-meta-item">Annual only &mdash; no quarterly entries yet</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Transform the Legal Department into a digitally enabled, knowledge-driven function with structured content management and AI enhancement</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Create a Legal Intake process that is intuitive, routes correctly, and reduces wasteful back and forth</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Increase capability for business teams to self-help via published resources, playbooks, and decision trees</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophos Sales -->
+      <div class="workspace-card">
+        <div class="workspace-card-header">
+          <div class="workspace-name">Sophos Sales</div>
+          <span class="workspace-key has-obj">SAL &middot; 3 OBJ</span>
+        </div>
+        <div class="workspace-meta">
+          <div class="workspace-meta-item"><strong>0 Key Results</strong> &mdash; objectives only, no KRs defined</div>
+        </div>
+        <div class="objectives-list">
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">New Logo (+10%)</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">Expansion (+5%)</div></div>
+          </div>
+          <div class="objective-item">
+            <div class="obj-bullet"></div>
+            <div><div class="obj-name">MSP growth (+14%)</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Workspaces WITHOUT Objectives -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon red">&#x26A0;&#xFE0F;</div>
+      <div>
+        <h2 class="section-title">Workspaces Missing FY27 Objectives</h2>
+        <div class="section-count">1 workspace has no objectives defined for FY27 &mdash; action required</div>
+      </div>
+    </div>
+
+    <div class="missing-grid">
+      <div class="missing-card">
+        <div class="missing-card-name">Sophos Marketing</div>
+        <div class="missing-card-key">MKT &middot; Workspace #19058</div>
+        <div class="missing-card-status">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6"/></svg>
+          No FY27 objectives or key results
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Observations -->
+  <div class="section">
+    <div class="readiness-bar-container" style="border-left: 4px solid var(--sophos-blue);">
+      <h3 style="font-size: 18px; font-weight: 700; color: var(--sophos-gray-800); margin-bottom: 16px;">Key Observations</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div>
+          <h4 style="font-size: 14px; font-weight: 700; color: var(--sophos-green); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Strengths</h4>
+          <ul style="list-style: none; font-size: 14px; color: var(--sophos-gray-600); line-height: 2;">
+            <li>&bull; <strong>90% workspace coverage</strong> &mdash; up from 50% at last report (Mar 26)</li>
+            <li>&bull; <strong>Finance</strong> leads with 138 objectives and 207 KRs, plus quarterly entries in Q1/Q2/Q4</li>
+            <li>&bull; <strong>STG</strong> strong coverage (53 obj, 151 KR) with Q1 and Q2 cascading underway</li>
+            <li>&bull; <strong>IT</strong> has robust Q1 detail (28 obj, 28 KR) signaling execution planning</li>
+            <li>&bull; <strong>Sophos MDR Services</strong> (new workspace) fully onboarded with 6 objectives</li>
+            <li>&bull; <strong>Corporate Sophos</strong> workspace now has 5 enterprise-level objectives with 22 KRs</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 14px; font-weight: 700; color: var(--sophos-red); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Gaps &amp; Risks</h4>
+          <ul style="list-style: none; font-size: 14px; color: var(--sophos-gray-600); line-height: 2;">
+            <li>&bull; <strong>Marketing</strong> &mdash; only workspace with zero FY27 OKRs across all intervals</li>
+            <li>&bull; <strong>Sales</strong> has objectives but <strong>0 key results</strong> &mdash; needs KR definition</li>
+            <li>&bull; <strong>4 IT objectives</strong> still labeled DRAFT &mdash; awaiting finalization</li>
+            <li>&bull; <strong>Q3 &amp; Q4</strong> are empty across all workspaces &mdash; quarterly cascade not yet started for H2</li>
+            <li>&bull; <strong>MDR Services</strong> has no quarterly intervals configured yet</li>
+            <li>&bull; <strong>OSP, HR, Legal</strong> &mdash; annual OKRs in place but no quarterly breakdown yet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="report-footer">
+  <div class="report-container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <strong>Sophos</strong> &middot; FY27 OKR Readiness Report &middot; Confidential
+      </div>
+      <div class="footer-right">
+        Data sourced from OBoard API &middot; Generated May 28, 2026 at 1:32 PM EDT
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
