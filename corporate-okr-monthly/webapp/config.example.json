@@ -1,0 +1,10 @@
+{
+  "oboardApiToken": "PASTE_SHARED_OBOARD_TOKEN_HERE",
+  "outputFolder": "AUTO",
+  "port": 8787,
+  "_notes": {
+    "oboardApiToken": "Shared Oboard API token (Settings > Integrations > API Tokens). Rotate periodically.",
+    "outputFolder": "Leave as AUTO to auto-detect the synced SharePoint OKR library at '%USERPROFILE%\\Sophos Ltd\\Office of Strategic Programs (OSP) - OKR'. Or set an explicit local path. Sync the library first via SharePoint > Sync / Add shortcut to OneDrive.",
+    "port": "Local port the app listens on (http://localhost:<port>)."
+  }
+}

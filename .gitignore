@@ -2,6 +2,7 @@
 oboard-api-token.txt
 *.token
 .env
+corporate-okr-monthly/webapp/config.json
 
 # OS
 Thumbs.db

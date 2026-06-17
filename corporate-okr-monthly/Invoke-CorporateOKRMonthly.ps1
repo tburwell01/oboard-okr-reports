@@ -9,7 +9,12 @@
 
 .NOTES
   Auth: $env:OBOARD_API_TOKEN or oboard-api-token.txt next to this script.
+
+.PARAMETER PreserveBaseline
+  When set, the run does NOT overwrite output\grades-baseline.json. Use for a Test Run so the
+  month-over-month comparison point stays frozen until a real (committing) run is done.
 #>
+param([switch]$PreserveBaseline)
 $ErrorActionPreference = 'Stop'
 $Root = $PSScriptRoot
 $configPath = Join-Path $Root 'config.json'
@@ -153,16 +158,18 @@ $json = ($payload | ConvertTo-Json -Depth 12 -Compress)
 $jsonPath = Join-Path $outDir 'corporate-fy27-latest.json'
 [System.IO.File]::WriteAllText($jsonPath, $json, [Text.UTF8Encoding]::new($false))
 
-# Save current grades as the new baseline for next month
-$annualBlock = $intervalMap[$annualName]
-$currentGrades = @()
-if ($annualBlock -and $annualBlock.objectiveRows) {
-  foreach ($row in $annualBlock.objectiveRows) {
-    $currentGrades += @{ displayId = $row.displayId; grade = $row.grade }
+# Save current grades as the new baseline for next month (skipped on a Test Run)
+if (-not $PreserveBaseline) {
+  $annualBlock = $intervalMap[$annualName]
+  $currentGrades = @()
+  if ($annualBlock -and $annualBlock.objectiveRows) {
+    foreach ($row in $annualBlock.objectiveRows) {
+      $currentGrades += @{ displayId = $row.displayId; grade = $row.grade }
+    }
   }
+  $gradesJson = ($currentGrades | ConvertTo-Json -Depth 4 -Compress)
+  [System.IO.File]::WriteAllText($baselinePath, $gradesJson, [Text.UTF8Encoding]::new($false))
 }
-$gradesJson = ($currentGrades | ConvertTo-Json -Depth 4 -Compress)
-[System.IO.File]::WriteAllText($baselinePath, $gradesJson, [Text.UTF8Encoding]::new($false))
 
 $tplPath = Join-Path $Root 'slide-template.html'
 if (-not (Test-Path $tplPath)) { throw "Missing slide-template.html in $Root" }
@@ -176,4 +183,5 @@ $htmlPath = Join-Path $outDir "Corporate-OKRs-FY27-monthly-$stamp.html"
 Write-Host "OK"
 Write-Host "  JSON: $jsonPath"
 Write-Host "  HTML: $htmlPath"
-Write-Host "  Baseline saved: $baselinePath"
+if ($PreserveBaseline) { Write-Host "  Baseline PRESERVED (test run, not reset)" }
+else { Write-Host "  Baseline saved: $baselinePath" }
